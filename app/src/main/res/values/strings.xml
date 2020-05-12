@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Smart Parking</string>
+    <string name="usuario">Usuário</string>
+    <string name="senha">Senha</string>
+    <string name="entrar">Entrar</string>
+    <string name="action_salvar">Salvar</string>
+    <string name="action_entrada">Entrada</string>
+    <string name="action_saida">Saída</string>
+    <string name="action_repetir">Repetir</string>
+    <string name="action_galeria">Galeria</string>
+    <string name="action_nomes">Visualizar nome</string>
+</resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "297578956349",
+    "firebase_url": "https://estacionamento-inteligen-27715.firebaseio.com",
+    "project_id": "estacionamento-inteligen-27715",
+    "storage_bucket": "estacionamento-inteligen-27715.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297578956349:android:7d0715eac43d9fc2814c54",
+        "android_client_info": {
+          "package_name": "com.therealbatman.estacionamentointeligente"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297578956349-l9fmbpgto8hpjhmcs4fr50bap0g93rdi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlqBynNQwB5m4Jeho45hRD9VoGdvZC4GE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297578956349-l9fmbpgto8hpjhmcs4fr50bap0g93rdi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

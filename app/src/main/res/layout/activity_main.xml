@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.EstacionamentoActivity">
+
+    <!--Imagem que será exibida em tela-->
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
+    <!--Texto que será exibido na tela-->
+    <TextView
+        android:id="@+id/text_nome"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_below="@+id/image_view"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="3dp"
+        android:text=""
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/text_vision"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_below="@+id/text_nome"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="3dp"
+        android:text=""
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/text_model"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_below="@+id/text_vision"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="3dp"
+        android:text=""
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/text_data"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_below="@+id/text_model"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="3dp"
+        android:text=""
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/text_hora"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_below="@+id/text_data"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:text=""
+        android:textSize="14dp" />
+
+
+    <Button
+        android:id="@+id/capture_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/detect_text_image"
+        android:layout_marginBottom="3dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Capturar Imagem"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="17dp" />
+
+    <Button
+        android:id="@+id/detect_text_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Detectar Veículo"
+        android:textAllCaps="false"
+        android:background="@color/black_estacionamento"
+        android:textColor="@android:color/white"
+        android:textSize="17dp"/>
+
+
+</RelativeLayout>
