@@ -68,6 +68,7 @@ public class EstacionamentoActivity extends AppCompatActivity {
     private String placa, modelo, data, hora;
     public List<String> nomeFuncionario, nomeVisitante;
     public int total = 15;
+    private boolean key = false;
     FirebaseVisionImageLabeler labeler;
     //retrofit
     private EntradaService entradaService;
@@ -116,17 +117,16 @@ public class EstacionamentoActivity extends AppCompatActivity {
         detectTextBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                key = true;
                 try {
                     detectTextFromImage();
                     detectModel();
                     detectData();
-
                 } catch (Exception e) {
                     Toast.makeText(EstacionamentoActivity.this, "Capture a imagem primeiro.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
     }
 
 
@@ -260,6 +260,7 @@ public class EstacionamentoActivity extends AppCompatActivity {
                 break;
 
             case R.id.action_entrada:
+                if(key == true){
                 //salvar os dados completo.
                 Entrada e = new Entrada();
                 e.setPlaca(placa);
@@ -273,24 +274,32 @@ public class EstacionamentoActivity extends AppCompatActivity {
                 v_Menos.setId(1);
                 v_Menos.setVagasDisponiveis(total);
                 //metodo retrofit
-                getVagas(v_Menos);
+                getVagas(v_Menos);}
+                else{
+                    Toast.makeText(EstacionamentoActivity.this, "Detecte o texto primeiro.", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
             case R.id.action_saida:
-                //salvar os dados de saida
-                Saida s = new Saida();
-                s.setPlaca(placa);
-                s.setModelo_carro(modelo);
-                s.setDtSaida(data);
-                s.setHrSaida(hora);
-                total = total + 1;
-                addSaida(s);
-                //passar os dados da activity aqui
-                Vagas v_Mais = new Vagas();
-                v_Mais.setId(1);
-                v_Mais.setVagasDisponiveis(total);
-                //metodo retrofit
-//                getVagas(v_Mais);
+                if(key == true) {
+                    //salvar os dados de saida
+                    Saida s = new Saida();
+                    s.setPlaca(placa);
+                    s.setModelo_carro(modelo);
+                    s.setDtSaida(data);
+                    s.setHrSaida(hora);
+                    total = total + 1;
+                    addSaida(s);
+                    //passar os dados da activity aqui
+                    Vagas v_Mais = new Vagas();
+                    v_Mais.setId(1);
+                    v_Mais.setVagasDisponiveis(total);
+                    //metodo retrofit
+                    getVagas(v_Mais);
+                } else {
+                    Toast.makeText(EstacionamentoActivity.this, "Detecte o texto primeiro.", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
         }
 
