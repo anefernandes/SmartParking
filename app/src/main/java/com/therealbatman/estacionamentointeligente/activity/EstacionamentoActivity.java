@@ -43,10 +43,12 @@ import com.therealbatman.estacionamentointeligente.model.Entrada;
 import com.therealbatman.estacionamentointeligente.model.Estacionamento;
 import com.therealbatman.estacionamentointeligente.model.Funcionario;
 import com.therealbatman.estacionamentointeligente.model.Saida;
+import com.therealbatman.estacionamentointeligente.model.Vagas;
 import com.therealbatman.estacionamentointeligente.remote.APIUtils;
 import com.therealbatman.estacionamentointeligente.remote.EntradaService;
 import com.therealbatman.estacionamentointeligente.remote.FuncionarioService;
 import com.therealbatman.estacionamentointeligente.remote.SaidaSerice;
+import com.therealbatman.estacionamentointeligente.remote.VagasService;
 import com.therealbatman.estacionamentointeligente.remote.VisitanteService;
 
 
@@ -64,21 +66,17 @@ public class EstacionamentoActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private LocalDateTime agora = LocalDateTime.now();
     private String placa, modelo, data, hora;
-    public String nomeF, nomeV;
     public List<String> nomeFuncionario, nomeVisitante;
-    public int total = 15, carro = 0;
+    public int total = 15;
     FirebaseVisionImageLabeler labeler;
     //retrofit
     private EntradaService entradaService;
     private SaidaSerice saidaSerice;
-    //teste novo com funcionario e visitanteo para pegar os nomes
     FuncionarioService funcionarioService;
     VisitanteService visitanteService;
+    VagasService vagasService; //vagas pra utilizar
     Retrofit retrofit;
 
-    public String getPlaca() { return placa; }
-
-    public void setPlaca(String placa) { this.placa = placa; }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +97,8 @@ public class EstacionamentoActivity extends AppCompatActivity {
         saidaSerice = retrofit.create(SaidaSerice.class);
         funcionarioService = retrofit.create(FuncionarioService.class);
         visitanteService = retrofit.create(VisitanteService.class);
+        //classe vagas
+        vagasService = retrofit.create(VagasService.class);
 
 
         captureImageBT.setOnClickListener(new View.OnClickListener() {
@@ -177,7 +177,6 @@ public class EstacionamentoActivity extends AppCompatActivity {
             for (FirebaseVisionText.TextBlock block : firebaseVisionText.getTextBlocks()){
                 String textPlaca = block.getText();
                 placa = textPlaca; //placa a ser pega
-                setPlaca(textPlaca);
                 tvVision.setText("Placa: " + textPlaca);
                 getPlacaF(placa);
             }
@@ -267,9 +266,14 @@ public class EstacionamentoActivity extends AppCompatActivity {
                 e.setModelo_carro(modelo);
                 e.setDtEntrada(data);
                 e.setHrEntrada(hora);
-                total = carro - 1;
+                total = total - 1;
                 addEntrada(e);
                 //passar os dados da activity aqui
+                Vagas v_Menos = new Vagas();
+                v_Menos.setId(1);
+                v_Menos.setVagasDisponiveis(total);
+                //metodo retrofit
+                getVagas(v_Menos);
                 break;
 
             case R.id.action_saida:
@@ -279,10 +283,14 @@ public class EstacionamentoActivity extends AppCompatActivity {
                 s.setModelo_carro(modelo);
                 s.setDtSaida(data);
                 s.setHrSaida(hora);
-                total = carro + 1;
+                total = total + 1;
                 addSaida(s);
                 //passar os dados da activity aqui
-
+                Vagas v_Mais = new Vagas();
+                v_Mais.setId(1);
+                v_Mais.setVagasDisponiveis(total);
+                //metodo retrofit
+//                getVagas(v_Mais);
                 break;
         }
 
@@ -327,6 +335,7 @@ public class EstacionamentoActivity extends AppCompatActivity {
         });
     }
 
+    //visualizar nomes em tela
     private void getPlacaF(String placaF) {
         Call<List<String>> funcionarioNome = funcionarioService.getFuncionarioName(placaF);
 
@@ -374,6 +383,24 @@ public class EstacionamentoActivity extends AppCompatActivity {
         });
     }
 
+    //atualizar vagas
+    private void getVagas(Vagas v){
+        Call<Vagas> callVagas = vagasService.atualizaVagas(v);
+        callVagas.enqueue(new Callback<Vagas>() {
+            @Override
+            public void onResponse(Call<Vagas> call, Response<Vagas> response) {
+                if(response.isSuccessful()){
+                    Vagas vagasResponse = response.body();
+                    System.out.println(vagasResponse);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Vagas> call, Throwable t) {
+                Log.e("ERROR: ", t.getMessage());
+            }
+        });
+    }
 
     @Override
     public void onBackPressed() {
