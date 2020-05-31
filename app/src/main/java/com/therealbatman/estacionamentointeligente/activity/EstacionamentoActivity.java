@@ -15,6 +15,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -77,12 +78,17 @@ public class EstacionamentoActivity extends AppCompatActivity {
     VisitanteService visitanteService;
     VagasService vagasService; //vagas pra utilizar
     Retrofit retrofit;
+    //resposta icone
+    private ImageView imResposta, imResposta1, imResposta2, imResposta3;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //icone
+
         //botões
         captureImageBT = findViewById(R.id.capture_image);
         detectTextBT = findViewById(R.id.detect_text_image);
@@ -100,8 +106,14 @@ public class EstacionamentoActivity extends AppCompatActivity {
         visitanteService = retrofit.create(VisitanteService.class);
         //classe vagas
         vagasService = retrofit.create(VagasService.class);
+        //resposta icone
+        imResposta = findViewById(R.id.iconresposta);
+        imResposta1 = findViewById(R.id.iconresposta1);
+        imResposta2 = findViewById(R.id.iconresposta2);
+        imResposta3 = findViewById(R.id.iconresposta3);
 
 
+        //botão
         captureImageBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,6 +169,13 @@ public class EstacionamentoActivity extends AppCompatActivity {
             public void onSuccess(FirebaseVisionText firebaseVisionText) {
 
                 displayTextFromImage(firebaseVisionText);
+                //criado para por imagem
+                if(firebaseVisionText.equals(null)){
+                    imResposta.setImageResource(R.drawable.ic_erro);
+                }
+                else {
+                    imResposta.setImageResource(R.drawable.ic_aprovado);
+                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -178,9 +197,10 @@ public class EstacionamentoActivity extends AppCompatActivity {
                 String textPlaca = block.getText();
                 placa = textPlaca; //placa a ser pega
                 tvVision.setText("Placa: " + textPlaca);
-                getPlacaF(placa);
+
             }
         }
+        getPlacaF(placa);
         getNomes(placa);
     }
 
@@ -194,7 +214,7 @@ public class EstacionamentoActivity extends AppCompatActivity {
         try {
             FirebaseVisionOnDeviceAutoMLImageLabelerOptions options =
                     new FirebaseVisionOnDeviceAutoMLImageLabelerOptions.Builder(localModel)
-                            .setConfidenceThreshold(0.4f)  // Evaluate your model in the Firebase console
+                            .setConfidenceThreshold(0.5f)  // Evaluate your model in the Firebase console
                             // to determine an appropriate value.
                             .build();
             labeler = FirebaseVision.getInstance().getOnDeviceAutoMLImageLabeler(options);
@@ -211,6 +231,14 @@ public class EstacionamentoActivity extends AppCompatActivity {
                             modelo = textModelo; //modelo para ser pego
                             float confidence = label.getConfidence();
                                 tvModel.setText("Modelo: " + textModelo);
+
+                                //adicionando imagem
+                                if(textModelo.equals(null)){
+                                    imResposta1.setImageResource(R.drawable.ic_erro);
+                                }
+                                else{
+                                    imResposta1.setImageResource(R.drawable.ic_aprovado);
+                                }
                         }
 
                     }
@@ -234,6 +262,10 @@ public class EstacionamentoActivity extends AppCompatActivity {
 
         tvData.setText("Data: " + dataFormatada);
         tvHora.setText("Hora: " + horaFormatada);
+
+        //imagem no icone
+        imResposta2.setImageResource(R.drawable.ic_aprovado);
+        imResposta3.setImageResource(R.drawable.ic_aprovado);
     }
 
     @Override

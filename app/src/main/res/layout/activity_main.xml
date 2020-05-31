@@ -11,41 +11,50 @@
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="match_parent"
-        android:layout_height="300dp" />
+        android:layout_height="270dp" />
 
     <!--Texto que será exibido na tela-->
     <TextView
         android:id="@+id/text_nome"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/image_view"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
         android:text=""
-        android:textSize="14dp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/text_vision"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/text_nome"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="3dp"
         android:layout_marginBottom="3dp"
+        android:gravity="center"
         android:text=""
-        android:textSize="14dp" />
+        android:textSize="30dp" />
+
+    <ImageView
+        android:id="@+id/iconresposta"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@+id/text_vision"
+        android:layout_below="@+id/text_nome"/>
 
     <TextView
         android:id="@+id/text_model"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/text_vision"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
@@ -53,13 +62,22 @@
         android:layout_marginEnd="5dp"
         android:layout_marginRight="3dp"
         android:layout_marginBottom="3dp"
+        android:gravity="center"
         android:text=""
-        android:textSize="14dp" />
+        android:textSize="30dp" />
+
+    <ImageView
+        android:id="@+id/iconresposta1"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@+id/text_model"
+        android:layout_below="@+id/text_vision"/>
+
 
     <TextView
         android:id="@+id/text_data"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/text_model"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
@@ -67,13 +85,21 @@
         android:layout_marginEnd="5dp"
         android:layout_marginRight="3dp"
         android:layout_marginBottom="3dp"
+        android:gravity="center"
         android:text=""
-        android:textSize="14dp" />
+        android:textSize="30dp" />
+
+    <ImageView
+        android:id="@+id/iconresposta2"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@+id/text_data"
+        android:layout_below="@+id/text_model"/>
 
     <TextView
         android:id="@+id/text_hora"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/text_data"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
@@ -81,8 +107,16 @@
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
+        android:gravity="center"
         android:text=""
-        android:textSize="14dp" />
+        android:textSize="30dp" />
+
+    <ImageView
+        android:id="@+id/iconresposta3"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@+id/text_hora"
+        android:layout_below="@+id/text_data"/>
 
 
     <Button
@@ -92,6 +126,7 @@
         android:layout_above="@+id/detect_text_image"
         android:layout_marginBottom="3dp"
         android:background="@color/colorPrimaryDark"
+        android:gravity="center"
         android:text="Capturar Imagem"
         android:textAllCaps="false"
         android:textColor="@android:color/white"

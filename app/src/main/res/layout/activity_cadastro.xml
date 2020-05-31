@@ -32,19 +32,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="105dp"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="5dp"
-            android:text="Nome:" />
+            android:text="Nome:"
+            android:textSize="36sp" />
 
         <EditText
             android:id="@+id/etNome"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="100dp" />
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:textSize="36sp" />
 
     </LinearLayout>
 
@@ -59,19 +61,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="105dp"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="5dp"
-            android:text="CPF:" />
+            android:text="CPF:"
+            android:textSize="36sp" />
 
         <EditText
             android:id="@+id/etCpf"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="100dp" />
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:textSize="36sp"/>
 
     </LinearLayout>
 
@@ -84,19 +88,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="105dp"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="5dp"
-            android:text="Placa:" />
+            android:text="Placa:"
+            android:textSize="36sp" />
 
         <EditText
             android:id="@+id/etPlaca"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="100dp" />
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:textSize="36sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -108,11 +114,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="15dp"
-            android:text="Celular:" />
+            android:text="Celular:"
+            android:textSize="36sp" />
 
         <EditText
             android:id="@+id/etCelular"
@@ -120,8 +127,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="100dp"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="36sp" />
     </LinearLayout>
 
     <Button
